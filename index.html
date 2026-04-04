@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dra. Vanesa Díaz Vargas · Médica Estética · Manizales</title>
+  <meta name="description" content="Médica estética en Manizales. Maestría internacional en la Escuela de Salamanca. Procedimientos seguros, personalizados y basados en evidencia científica." />
+
+  <!-- ═══════════════════════════════════════
+       FUENTES
+  ═══════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════
+       VARIABLES GLOBALES
+       Para cambiar colores del sitio: edita solo esta sección.
+    ═══════════════════════════════════════ */
+    :root {
+      --accent:        #c4956a;       /* Color dorado/terracota principal */
+      --accent-dark:   #a07550;       /* Acento oscuro para hover */
+      --bg:            #ffffff;
+      --bg-soft:       #f7f4f0;       /* Fondo suave para secciones alternadas */
+      --bg-hero:       #ede8e0;       /* Fondo del panel visual del hero */
+      --bg-dr:         #d8dfe2;       /* Fondo panel foto doctora */
+      --text:          #1a1a1a;
+      --text-muted:    #7a7570;
+      --border:        rgba(0,0,0,0.10);
+      --border-soft:   rgba(0,0,0,0.06);
+      --font-serif:    'Cormorant Garamond', Georgia, serif;
+      --font-sans:     'DM Sans', system-ui, sans-serif;
+      --nav-h:         52px;
+    }
+
+    /* ═══════════════════════════════════════
+       RESET Y BASE
+    ═══════════════════════════════════════ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    button { font-family: var(--font-sans); cursor: pointer; }
+
+    /* ═══════════════════════════════════════
+       UTILIDADES COMUNES
+    ═══════════════════════════════════════ */
+    .eyebrow {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 14px;
+    }
+    .eyebrow::before {
+      content: ''; width: 22px; height: 0.5px;
+      background: var(--accent); display: block; flex-shrink: 0;
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 4vw, 38px);
+      font-weight: 300; line-height: 1.1;
+    }
+    .section-title em { font-style: italic; color: var(--accent); }
+    .section-body {
+      font-size: 13px; font-weight: 300; line-height: 1.95;
+      color: var(--text-muted); max-width: 580px;
+    }
+    .btn-primary {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; padding: 12px 28px;
+      background: var(--text); color: #f5f0e8;
+      border: none; transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #333; }
+    .btn-accent {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; padding: 12px 28px;
+      background: var(--accent); color: #fff;
+      border: none; transition: background 0.2s;
+    }
+    .btn-accent:hover { background: var(--accent-dark); }
+    .btn-outline {
+      font-size: 10px; font-weight: 400; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 12px 28px;
+      background: none; color: var(--text);
+      border: 0.5px solid var(--border); transition: background 0.2s;
+    }
+    .btn-outline:hover { background: var(--bg-soft); }
+    .btn-ghost {
+      font-size: 10px; font-weight: 400; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-muted);
+      background: none; border: none;
+      text-decoration: underline; text-underline-offset: 4px;
+    }
+
+
+    /* ═══════════════════════════════════════
+       ██ BLOQUE: NAV
+       Para ocultar: añade display:none a <nav id="nav">
+    ═══════════════════════════════════════ */
+    #nav {
+      position: sticky; top: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 40px; height: var(--nav-h);
+      background: var(--bg);
+      border-bottom: 0.5px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    #nav.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.06); }
+    .nav-logo {
+      font-family: var(--font-serif); font-size: 18px;
+      font-weight: 300; letter-spacing: 0.06em; white-space: nowrap;
+    }
+    .nav-logo em { font-style: italic; color: var(--accent); }
+    .nav-links { display: flex; gap: 2px; }
+    .nav-link {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-muted);
+      padding: 5px 11px; background: none; border: none;
+      position: relative; transition: color 0.2s; white-space: nowrap;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: 1px;
+      left: 11px; right: 11px; height: 1px;
+      background: var(--accent);
+      transform: scaleX(0); transition: transform 0.25s ease;
+      transform-origin: left;
+    }
+    .nav-link.active { color: var(--text); font-weight: 500; }
+    .nav-link.active::after { transform: scaleX(1); }
+    .nav-cta {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 7px 18px;
+      border: 0.5px solid var(--accent); background: none;
+      color: var(--accent); transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--accent); color: #fff; }
+
+    /* Barra de progreso bajo el nav */
+    #progress-bar {
+      position: sticky; top: var(--nav-h); z-index: 199;
+      height: 2px; background: var(--border-soft);
+    }
+    #progress-fill {
+      height: 100%; width: 0%;
+      background: var(--accent); transition: width 0.08s linear;
+    }
+
+    /* Dots de navegación lateral */
+    #side-dots {
+      position: fixed; right: 20px; top: 50%;
+      transform: translateY(-50%); z-index: 100;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .side-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      border: 0.5px solid var(--border);
+      background: transparent; cursor: pointer;
+      transition: background 0.2s, transform 0.2s, border-color 0.2s;
+      position: relative;
+    }
+    .side-dot.active {
+      background: var(--accent); border-color: var(--accent);
+      transform: scale(1.3);
+    }
+    .side-dot:hover .dot-tip { opacity: 1; transform: translateY(-50%) translateX(-8px); }
+    .dot-tip {
+      position: absolute; right: 18px; top: 50%;
+      transform: translateY(-50%) translateX(0);
+      background: var(--bg); border: 0.5px solid var(--border);
+      padding: 3px 10px; font-size: 10px; letter-spacing: 0.1em;
+      text-transform: uppercase; white-space: nowrap;
+      color: var(--text-muted); opacity: 0;
+      transition: opacity 0.2s, transform 0.2s; pointer-events: none;
+      font-family: var(--font-sans);
+    }
+
+
+    /* ═══════════════════════════════════════
+       ██ BLOQUE: HERO
+       Para ocultar: comenta <section id="inicio"> ... </section>
+    ═══════════════════════════════════════ */
+    #inicio {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - var(--nav-h));
+      border-bottom: 0.5px solid var(--border);
+    }
+    .hero-text {
+      padding: 80px 48px 80px 40px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .hero-h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(40px, 5vw, 58px);
+      font-weight: 300; line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    .hero-h1 em { font-style: italic; color: var(--accent); }
+    .hero-sub {
+      font-size: 14px; font-weight: 300; line-height: 1.9;
+      color: var(--text-muted); max-width: 340px; margin-bottom: 36px;
+    }
+    .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .hero-visual {
+      background: var(--bg-hero);
+      position: relative; overflow: hidden;
+      display: flex; align-items: flex-end; justify-content: flex-start;
+      padding: 24px;
+    }
+    /* ── Reemplaza este bloque con <img src="foto-vanesa.jpg" alt="Dra. Vanesa Díaz"> ── */
+    .hero-photo-placeholder {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .photo-frame {
+      width: 62%; height: 82%;
+      border: 0.5px solid rgba(150,120,90,0.2);
+    }
+    .photo-note {
+      position: absolute; bottom: 20px; left: 0; right: 0; text-align: center;
+      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(100,80,60,0.35);
+    }
+    /* ── Fin placeholder ── */
+    .stat-pill {
+      position: absolute; bottom: 28px; left: 24px;
+      background: var(--bg); border: 0.5px solid var(--border);
+      padding: 12px 18px; z-index: 2;
+    }
+    .stat-num {
+      font-family: var(--font-serif); font-size: 30px;
+      font-weight: 300; color: var(--accent); line-height: 1;
+    }
+    .stat-label {
+      font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--text-muted); margin-top: 4px;
+    }
+
+
+    /* ═══════════════════════════════════════
+       ██ BLOQUE: MARQUEE (banda de servicios)
+       Para ocultar: comenta <div id="marquee"> ... </div>
+    ═══════════════════════════════════════ */
+    #marquee {
+      background: var(--bg-soft);
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+      padding: 12px 40px;
+      display: flex; gap: 44px; overflow: hidden;
+    }
+    .mq-item {
+      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--text-muted); white-space: nowrap;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .mq-dot {
+      width: 3px; height: 3px; background: var(--accent);
+      border-radius: 50%; display: inline-block; flex-shrink: 0;
+    }
+
+
+    /* ═══════════════════════════════════════
+       ██ BLOQUE: SOBRE MÍ
+       Para ocultar: comenta <section id="sobre-mi"> ... </section>
+    ═══════════════════════════════════════ */
+    #sobre-mi {
+      display: grid; grid-template-columns: 1fr 1.3fr;
+      border-bottom: 0.5px solid var(--border);
+      min-height: 480px;
+    }
+    .dr-visual {
+      background: var(--bg-dr);
+      display: flex; align-items: center; justify-content: center;
+      min-height: 380px;
+    }
+    /* ── Reemplaza con <img src="foto-dra-perfil.jpg" alt="Dra. Vanesa Díaz"> ── */
+    .dr-photo-note {
+      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(60,70,80,0.35);
+    }
+    .dr-content {
+      padding: 64px 48px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .dr-name {
+      font-family: var(--font-serif); font-size: 36px;
+      font-weight: 300; margin-bottom: 4px;
+    }
+    .dr-name em { font-style: italic; color: var(--accent); }
+    .dr-role {
+      font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 24px;
+    }
+    .dr-bio {
+      font-size: 13px; font-weight: 300; line-height: 1.95;
+      color: var(--text-muted); margin-bottom: 14px;
+    }
+    .cred-list { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+    .cred-item { display: flex; gap: 12px; font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+    .cred-dot {
+      width: 4px; height: 4px; background: var(--accent);
+      border-radius: 50%; margin-top: 7px; flex-shrink: 0;
+    }
+    .badge-row { display: flex; gap: 8px; margin-top: 24px; flex-wrap: wrap; }
+    .badge {
+      font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 5px 14px; border: 0.5px solid var(--accent); color: var(--accent);
+    }
+
+
+    /* ═══════════════════════════════════════
+       ██ BLOQUE: SERVICIOS
+       Para ocultar: comenta <section id="servicios"> ... </section>
+       Para quitar un servicio: comenta el <div class="srv-wrap"> correspondiente
+    ═══════════════════════════════════════ */
+    #servicios {
+      padding: 72px 40px;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .sec-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; margin-bottom: 40px;
+    }
+    .srv-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+    }
+    .srv-wrap { background: var(--bg); }
+    .srv-card {
+      padding: 26px 22px; cursor: pointer;
+      transition: background 0.18s; background: var(--bg);
+      border: none; width: 100%; text-align: left;
+    }
+    .srv-card:hover { background: var(--bg-soft); }
+    .srv-num {
+      font-family: var(--font-serif); font-size: 12px;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .srv-name { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+    .srv-desc {
+      font-size: 12px; color: var(--text-muted);
+      line-height: 1.75; margin-bottom: 14px;
+    }
+    .srv-cta {
+      font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); display: flex; align-items: center; gap: 6px;
+    }
+    .srv-cta::after { content: '→'; transition: transform 0.2s; }
+    .srv-card[aria-expanded="true"] .srv-cta::after { transform: rotate(90deg); }
+    .srv-detail {
+      background: var(--bg-soft);
+      border-top: 0.5px solid var(--border);
+      padding: 20px 22px;
+      display: none;
+    }
+    .srv-detail.open { display: block; }
+    .srv-detail-title {
+      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 10px;
+    }
+    .srv-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .srv-tag {
+      font-size: 11px; padding: 4px 12px;
+      border: 0.5px solid var(--border); color: var(--text-muted);
+    }
+    .srv-proto {
+      margin-top: 12px; font-size: 11px; color: var(--accent);
+      letter-spacing: 0.08em;
+    }
+
+
+    /* ═══════════════════════════════════════
+       ██ BLOQUE: PORTAFOLIO (antes / después)
+       Para ocultar: comenta <section id="portafolio"> ... </section>
+       Para agregar casos: duplica un .ba-card
+    ═══════════════════════════════════════ */
+    #portafolio {
+      padding: 72px 40px;
+      background: var(--bg-soft);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .ba-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin-top: 36px;
+    }
+    .ba-card { border: 0.5px solid var(--border); background: var(--bg); }
+    .ba-images { display: grid; grid-template-columns: 1fr 1fr; height: 180px; }
+    .ba-before {
+      background: #e0dbd5;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(80,70,60,0.4);
+      border-right: 0.5px solid rgba(150,140,130,0.2);
+    }
+    .ba-after {
+      background: #cfd8cb;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(50,70,50,0.4);
+    }
+    /* ── Cuando tengas fotos reales, reemplaza cada .ba-before / .ba-after por:
+          <img src="caso1-antes.jpg" alt="Antes">
+          <img src="caso1-despues.jpg" alt="Después">
+    ── */
+    .ba-info {
+      padding: 12px 14px;
+      border-top: 0.5px solid var(--border);
+    }
+    .ba-name { font-size: 13px; font-weight: 500; }
+    .ba-detail { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+    .ba-note {
+      margin-top: 18px; font-size: 12px; font-style: italic;
+      color: var(--text-muted);
+    }
+
+
+    /* ═══════════════════════════════════════
+       ██ BLOQUE: TESTIMONIOS
+       Para ocultar: comenta <section id="testimonios"> ... </section>
+       Para agregar uno: duplica un .test-card
+    ═══════════════════════════════════════ */
+    #testimonios {
+      padding: 72px 40px;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .test-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px; margin-top: 36px;
+    }
+    .test-card { padding: 24px; border: 0.5px solid var(--border); }
+    .stars { font-size: 12px; color: var(--accent); letter-spacing: 2px; margin-bottom: 12px; }
+    .test-text {
+      font-family: var(--font-serif); font-size: 15px; font-style: italic;
+      font-weight: 300; line-height: 1.8; margin-bottom: 16px; color: var(--text);
+    }
+    .test-author {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+
+
+    /* ═══════════════════════════════════════
+       ██ BLOQUE: CTA / CONTACTO
+       Para ocultar: comenta <section id="contacto"> ... </section>
+    ═══════════════════════════════════════ */
+    #contacto {
+      padding: 88px 40px;
+      text-align: center;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .cta-cupos {
+      display: inline-block; font-size: 10px; letter-spacing: 0.18em;
+      text-transform: uppercase; padding: 6px 18px;
+      border: 0.5px solid var(--accent); color: var(--accent);
+      margin-bottom: 28px;
+    }
+    .cta-h {
+      font-family: var(--font-serif);
+      font-size: clamp(34px, 5vw, 50px);
+      font-weight: 300; line-height: 1.2; margin-bottom: 12px;
+    }
+    .cta-h em { font-style: italic; color: var(--accent); }
+    .cta-sub {
+      font-size: 13px; color: var(--text-muted);
+      margin-bottom: 36px; line-height: 1.8;
+    }
+    .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+    .contact-data {
+      font-size: 12px; color: var(--text-muted);
+      line-height: 2.2; letter-spacing: 0.04em;
+    }
+    .contact-data a { color: var(--accent); text-decoration: none; }
+    .contact-data a:hover { text-decoration: underline; }
+
+
+    /* ═══════════════════════════════════════
+       ██ BLOQUE: FOOTER
+       Para ocultar: comenta <footer id="footer"> ... </footer>
+    ═══════════════════════════════════════ */
+    #footer {
+      padding: 22px 40px;
+      border-top: 0.5px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 11px; color: var(--text-muted);
+    }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--accent); }
+
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE BÁSICO
+    ═══════════════════════════════════════ */
+    @media (max-width: 768px) {
+      #nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      #inicio { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 280px; }
+      .hero-text { padding: 48px 20px; }
+      #sobre-mi { grid-template-columns: 1fr; }
+      .dr-content { padding: 36px 20px; }
+      .srv-grid { grid-template-columns: 1fr 1fr; }
+      .ba-grid { grid-template-columns: 1fr; }
+      .test-grid { grid-template-columns: 1fr; }
+      #servicios, #portafolio, #testimonios, #contacto { padding: 48px 20px; }
+      #side-dots { display: none; }
+      #footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .srv-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════
+       ██ NAV — Barra de navegación sticky
+       Secciones del menú: edita los data-target y el texto de cada .nav-link
+  ═══════════════════════════════════════ -->
+  <nav id="nav">
+    <div class="nav-logo"><em>Dra.</em> Vanesa Díaz</div>
+    <div class="nav-links">
+      <button class="nav-link active" data-target="inicio">Inicio</button>
+      <button class="nav-link" data-target="sobre-mi">Sobre mí</button>
+      <button class="nav-link" data-target="servicios">Servicios</button>
+      <button class="nav-link" data-target="portafolio">Portafolio</button>
+      <button class="nav-link" data-target="testimonios">Testimonios</button>
+      <button class="nav-link" data-target="contacto">Contacto</button>
+    </div>
+    <button class="nav-cta" onclick="scrollTo('contacto')">Agendar cita</button>
+  </nav>
+
+  <!-- Barra de progreso de scroll -->
+  <div id="progress-bar"><div id="progress-fill"></div></div>
+
+  <!-- Dots de navegación lateral -->
+  <div id="side-dots">
+    <div class="side-dot active" data-target="inicio"><span class="dot-tip">Inicio</span></div>
+    <div class="side-dot" data-target="sobre-mi"><span class="dot-tip">Sobre mí</span></div>
+    <div class="side-dot" data-target="servicios"><span class="dot-tip">Servicios</span></div>
+    <div class="side-dot" data-target="portafolio"><span class="dot-tip">Portafolio</span></div>
+    <div class="side-dot" data-target="testimonios"><span class="dot-tip">Testimonios</span></div>
+    <div class="side-dot" data-target="contacto"><span class="dot-tip">Contacto</span></div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       ██ HERO — Sección de entrada
+       Foto: reemplaza .hero-photo-placeholder por <img src="foto-vanesa.jpg" alt="Dra. Vanesa Díaz">
+  ═══════════════════════════════════════ -->
+  <section id="inicio">
+    <div class="hero-text">
+      <div class="eyebrow">Medicina Estética · Manizales</div>
+      <h1 class="hero-h1">Realzo lo que <em>ya eres</em></h1>
+      <p class="hero-sub">
+        Médica estética con maestría internacional en la Escuela de Salamanca.
+        Procedimientos seguros, personalizados y basados en evidencia científica.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="scrollTo('servicios')">Ver servicios</button>
+        <button class="btn-ghost" onclick="scrollTo('sobre-mi')">Conocer más →</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <!-- ── REEMPLAZA ESTE BLOQUE CON LA FOTO REAL ── -->
+      <div class="hero-photo-placeholder">
+        <div class="photo-frame"></div>
+        <div class="photo-note">Foto Dra. Vanesa Díaz</div>
+      </div>
+      <!-- ── FIN PLACEHOLDER ── -->
+      <div class="stat-pill">
+        <div class="stat-num">3</div>
+        <div class="stat-label">pacientes por día · máximo</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       ██ MARQUEE — Banda de servicios animada
+       Para quitar un servicio: borra el .mq-item correspondiente
+  ═══════════════════════════════════════ -->
+  <div id="marquee">
+    <div class="mq-item">PRP Facial<span class="mq-dot"></span></div>
+    <div class="mq-item">Peeling Químico<span class="mq-dot"></span></div>
+    <div class="mq-item">Mesoterapia Hidratante<span class="mq-dot"></span></div>
+    <div class="mq-item">Mesoterapia Despigmentante<span class="mq-dot"></span></div>
+    <div class="mq-item">Toxina Botulínica<span class="mq-dot"></span></div>
+    <div class="mq-item">Bótox Axilar<span class="mq-dot"></span></div>
+    <div class="mq-item">Cauterización y Remoción<span class="mq-dot"></span></div>
+    <div class="mq-item">PRP Capilar<span class="mq-dot"></span></div>
+    <div class="mq-item">Rejuvenecimiento Facial<span class="mq-dot"></span></div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       ██ SOBRE MÍ — Perfil de la doctora
+       Foto: reemplaza .dr-photo-note por <img src="foto-dra-perfil.jpg" alt="Dra. Vanesa Díaz">
+  ═══════════════════════════════════════ -->
+  <section id="sobre-mi">
+    <div class="dr-visual">
+      <!-- ── REEMPLAZA CON FOTO REAL ── -->
+      <span class="dr-photo-note">Foto Dra. Vanesa</span>
+    </div>
+    <div class="dr-content">
+      <div class="eyebrow">La especialista</div>
+      <div class="dr-name"><em>Dra.</em> Vanesa Díaz Vargas</div>
+      <div class="dr-role">Médica Estética · Manizales, Caldas</div>
+      <p class="dr-bio">
+        Médica general egresada de la Universidad de Manizales, con maestría
+        internacional en medicina estética de la Escuela de Salamanca, en Madrid, España.
+        Me enfoco en realzar la belleza de forma natural, ofreciendo tratamientos seguros,
+        personalizados y basados en evidencia científica.
+      </p>
+      <p class="dr-bio">
+        Creo firmemente que la medicina estética no se trata de transformar,
+        sino de realzar la belleza individual y fortalecer la confianza a través de
+        procedimientos realizados con criterio, precisión y cuidado.
+      </p>
+      <div class="cred-list">
+        <div class="cred-item">
+          <span class="cred-dot"></span>
+          <span>Médica general · Universidad de Manizales</span>
+        </div>
+        <div class="cred-item">
+          <span class="cred-dot"></span>
+          <span>Maestría internacional en medicina estética · Escuela de Salamanca, Madrid</span>
+        </div>
+        <div class="cred-item">
+          <span class="cred-dot"></span>
+          <span>Consultorio privado · Barrio Milán, Manizales</span>
+        </div>
+        <div class="cred-item">
+          <span class="cred-dot"></span>
+          <span>Máximo 3 pacientes por día — atención completamente personalizada</span>
+        </div>
+      </div>
+      <div class="badge-row">
+        <span class="badge">Armonía</span>
+        <span class="badge">Naturalidad</span>
+        <span class="badge">Evidencia</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       ██ SERVICIOS — Grilla de tratamientos
+       Para QUITAR un servicio: borra el bloque <!-- SERVICIO XX --> completo
+       Para AGREGAR uno: duplica cualquier bloque y edita el contenido
+  ═══════════════════════════════════════ -->
+  <section id="servicios">
+    <div class="sec-header">
+      <div>
+        <div class="eyebrow">Tratamientos</div>
+        <h2 class="section-title">Servicios</h2>
+      </div>
+      <span style="font-size:11px;color:var(--text-muted);">Toca cada servicio para ver detalles</span>
+    </div>
+
+    <div class="srv-grid">
+
+      <!-- SERVICIO 01 -->
+      <div class="srv-wrap">
+        <button class="srv-card" onclick="toggleService('s01')" aria-expanded="false">
+          <div class="srv-num">01</div>
+          <div class="srv-name">PRP Facial</div>
+          <div class="srv-desc">Factores de crecimiento de tu propia sangre para estimular la regeneración y el rejuvenecimiento de la piel.</div>
+          <div class="srv-cta">Ver beneficios</div>
+        </button>
+        <div class="srv-detail" id="s01">
+          <div class="srv-detail-title">Beneficios</div>
+          <div class="srv-tags">
+            <span class="srv-tag">Estimula colágeno</span>
+            <span class="srv-tag">Mejora textura</span>
+            <span class="srv-tag">Luminosidad</span>
+            <span class="srv-tag">Regeneración cutánea</span>
+          </div>
+          <div class="srv-proto">Protocolo: 3 a 4 sesiones iniciales</div>
+        </div>
+      </div>
+
+      <!-- SERVICIO 02 -->
+      <div class="srv-wrap">
+        <button class="srv-card" onclick="toggleService('s02')" aria-expanded="false">
+          <div class="srv-num">02</div>
+          <div class="srv-name">PRP Capilar</div>
+          <div class="srv-desc">Factores de crecimiento obtenidos de tu sangre para estimular el folículo piloso y combatir la caída.</div>
+          <div class="srv-cta">Ver beneficios</div>
+        </button>
+        <div class="srv-detail" id="s02">
+          <div class="srv-detail-title">Beneficios</div>
+          <div class="srv-tags">
+            <span class="srv-tag">Estimula crecimiento</span>
+            <span class="srv-tag">Reduce caída</span>
+            <span class="srv-tag">Fortalece folículo</span>
+          </div>
+          <div class="srv-proto">Protocolo: 3 a 4 sesiones iniciales</div>
+        </div>
+      </div>
+
+      <!-- SERVICIO 03 -->
+      <div class="srv-wrap">
+        <button class="srv-card" onclick="toggleService('s03')" aria-expanded="false">
+          <div class="srv-num">03</div>
+          <div class="srv-name">Peeling Químico</div>
+          <div class="srv-desc">Ácidos AHA, BHA y activos médicos para renovar las capas superficiales de la piel, mejorando textura y tono.</div>
+          <div class="srv-cta">Ver beneficios</div>
+        </button>
+        <div class="srv-detail" id="s03">
+          <div class="srv-detail-title">Beneficios</div>
+          <div class="srv-tags">
+            <span class="srv-tag">Mejora manchas</span>
+            <span class="srv-tag">Disminuye acné</span>
+            <span class="srv-tag">Luminosidad</span>
+            <span class="srv-tag">Renovación celular</span>
+          </div>
+          <div class="srv-proto">Protocolo: 3 a 4 sesiones</div>
+        </div>
+      </div>
+
+      <!-- SERVICIO 04 -->
+      <div class="srv-wrap">
+        <button class="srv-card" onclick="toggleService('s04')" aria-expanded="false">
+          <div class="srv-num">04</div>
+          <div class="srv-name">Mesoterapia Hidratante</div>
+          <div class="srv-desc">Microinyecciones de ácido hialurónico para hidratación profunda y mejora de la calidad de la piel.</div>
+          <div class="srv-cta">Ver beneficios</div>
+        </button>
+        <div class="srv-detail" id="s04">
+          <div class="srv-detail-title">Beneficios</div>
+          <div class="srv-tags">
+            <span class="srv-tag">Hidratación profunda</span>
+            <span class="srv-tag">Piel luminosa</span>
+            <span class="srv-tag">Mejora elasticidad</span>
+          </div>
+          <div class="srv-proto">Duración del efecto: 3 meses</div>
+        </div>
+      </div>
+
+      <!-- SERVICIO 05 -->
+      <div class="srv-wrap">
+        <button class="srv-card" onclick="toggleService('s05')" aria-expanded="false">
+          <div class="srv-num">05</div>
+          <div class="srv-name">Mesoterapia Despigmentante</div>
+          <div class="srv-desc">Ácido tranexámico y activos despigmentantes para disminuir manchas, melasma y unificar el tono de la piel.</div>
+          <div class="srv-cta">Ver beneficios</div>
+        </button>
+        <div class="srv-detail" id="s05">
+          <div class="srv-detail-title">Beneficios</div>
+          <div class="srv-tags">
+            <span class="srv-tag">Disminuye manchas</span>
+            <span class="srv-tag">Mejora melasma</span>
+            <span class="srv-tag">Unifica tono</span>
+            <span class="srv-tag">Luminosidad facial</span>
+          </div>
+          <div class="srv-proto">Protocolo: 3 a 5 sesiones</div>
+        </div>
+      </div>
+
+      <!-- SERVICIO 06 -->
+      <div class="srv-wrap">
+        <button class="srv-card" onclick="toggleService('s06')" aria-expanded="false">
+          <div class="srv-num">06</div>
+          <div class="srv-name">Rejuvenecimiento Facial</div>
+          <div class="srv-desc">Protocolo con retinal, centella asiática, PDNR de salmón y ácido hialurónico. Con Skinretin Xpert (Mesoestetic).</div>
+          <div class="srv-cta">Ver beneficios</div>
+        </button>
+        <div class="srv-detail" id="s06">
+          <div class="srv-detail-title">Beneficios</div>
+          <div class="srv-tags">
+            <span class="srv-tag">Renovación celular</span>
+            <span class="srv-tag">Textura y luminosidad</span>
+            <span class="srv-tag">Efecto antiedad</span>
+          </div>
+          <div class="srv-proto">Ideal para signos tempranos o moderados de envejecimiento</div>
+        </div>
+      </div>
+
+      <!-- SERVICIO 07 -->
+      <div class="srv-wrap">
+        <button class="srv-card" onclick="toggleService('s07')" aria-expanded="false">
+          <div class="srv-num">07</div>
+          <div class="srv-name">Toxina Botulínica</div>
+          <div class="srv-desc">Relajación temporal de los músculos responsables de las arrugas de expresión para un resultado natural.</div>
+          <div class="srv-cta">Ver beneficios</div>
+        </button>
+        <div class="srv-detail" id="s07">
+          <div class="srv-detail-title">Zonas de tratamiento</div>
+          <div class="srv-tags">
+            <span class="srv-tag">Frente</span>
+            <span class="srv-tag">Entrecejo</span>
+            <span class="srv-tag">Contorno de ojos</span>
+            <span class="srv-tag">Previene arrugas profundas</span>
+          </div>
+          <div class="srv-proto">Duración: 6 a 8 meses</div>
+        </div>
+      </div>
+
+      <!-- SERVICIO 08 -->
+      <div class="srv-wrap">
+        <button class="srv-card" onclick="toggleService('s08')" aria-expanded="false">
+          <div class="srv-num">08</div>
+          <div class="srv-name">Bótox Axilar</div>
+          <div class="srv-desc">Bloqueo temporal de las glándulas sudoríparas para controlar la hiperhidrosis axilar de forma segura.</div>
+          <div class="srv-cta">Ver beneficios</div>
+        </button>
+        <div class="srv-detail" id="s08">
+          <div class="srv-detail-title">Beneficios</div>
+          <div class="srv-tags">
+            <span class="srv-tag">Reduce sudoración 90%</span>
+            <span class="srv-tag">Elimina mal olor</span>
+            <span class="srv-tag">Procedimiento ambulatorio</span>
+          </div>
+          <div class="srv-proto">Duración: 6 a 8 meses</div>
+        </div>
+      </div>
+
+      <!-- SERVICIO 09 -->
+      <div class="srv-wrap">
+        <button class="srv-card" onclick="toggleService('s09')" aria-expanded="false">
+          <div class="srv-num">09</div>
+          <div class="srv-name">Cauterización y Remoción</div>
+          <div class="srv-desc">Retiro de lesiones benignas de la piel — lunares y lesiones afines — de forma segura y ambulatoria.</div>
+          <div class="srv-cta">Ver beneficios</div>
+        </button>
+        <div class="srv-detail" id="s09">
+          <div class="srv-detail-title">Beneficios</div>
+          <div class="srv-tags">
+            <span class="srv-tag">Eliminación precisa</span>
+            <span class="srv-tag">Procedimiento ambulatorio</span>
+            <span class="srv-tag">Recuperación rápida</span>
+          </div>
+          <div class="srv-proto">Resultado inmediato · Sin hospitalización</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       ██ PORTAFOLIO — Galería antes / después
+       Para agregar un caso: duplica un .ba-card completo
+       Para poner fotos reales: reemplaza .ba-before y .ba-after por <img src="...">
+  ═══════════════════════════════════════ -->
+  <section id="portafolio">
+    <div class="eyebrow">Resultados reales</div>
+    <h2 class="section-title">Portafolio</h2>
+    <p class="section-body" style="margin-top:12px;">
+      Cada caso es único. Los resultados reflejan el compromiso con
+      la naturalidad y la armonía individual de cada paciente.
+    </p>
+
+    <div class="ba-grid">
+
+      <!-- CASO 01 -->
+      <div class="ba-card">
+        <div class="ba-images">
+          <div class="ba-before">Antes</div>
+          <div class="ba-after">Después</div>
+        </div>
+        <div class="ba-info">
+          <div class="ba-name">Toxina Botulínica</div>
+          <div class="ba-detail">Frente + entrecejo · 1 sesión</div>
+        </div>
+      </div>
+
+      <!-- CASO 02 -->
+      <div class="ba-card">
+        <div class="ba-images">
+          <div class="ba-before">Antes</div>
+          <div class="ba-after">Después</div>
+        </div>
+        <div class="ba-info">
+          <div class="ba-name">Mesoterapia Despigmentante</div>
+          <div class="ba-detail">Protocolo manchas · 4 sesiones</div>
+        </div>
+      </div>
+
+      <!-- CASO 03 -->
+      <div class="ba-card">
+        <div class="ba-images">
+          <div class="ba-before">Antes</div>
+          <div class="ba-after">Después</div>
+        </div>
+        <div class="ba-info">
+          <div class="ba-name">PRP Facial</div>
+          <div class="ba-detail">Rejuvenecimiento · 3 sesiones</div>
+        </div>
+      </div>
+
+    </div>
+    <p class="ba-note">* Más casos disponibles en Instagram · <a href="https://instagram.com/dra.vanesad" target="_blank" style="color:var(--accent);">@dra.vanesad</a></p>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       ██ TESTIMONIOS
+       Para agregar uno: duplica un .test-card
+       Para quitar la sección: comenta todo el bloque
+  ═══════════════════════════════════════ -->
+  <section id="testimonios">
+    <div class="eyebrow">Lo que dicen mis pacientes</div>
+    <h2 class="section-title">Testimonios</h2>
+
+    <div class="test-grid">
+
+      <!-- TESTIMONIO 01 -->
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p class="test-text">"El resultado fue completamente natural. Por primera vez sentí que alguien escuchó lo que yo quería, no lo que quería mostrar."</p>
+        <div class="test-author">M. Rodríguez · Armonización facial</div>
+      </div>
+
+      <!-- TESTIMONIO 02 -->
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p class="test-text">"Me sentí segura en todo momento. La doctora explica cada paso y los resultados superaron mis expectativas."</p>
+        <div class="test-author">C. Vargas · Rejuvenecimiento</div>
+      </div>
+
+      <!-- TESTIMONIO 03 -->
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p class="test-text">"La consulta fue honesta y sin presiones. Ahora solo me pregunto por qué no vine antes."</p>
+        <div class="test-author">L. Moreno · Skincare médico</div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       ██ CONTACTO — CTA final
+  ═══════════════════════════════════════ -->
+  <section id="contacto">
+    <div class="cta-cupos">Solo 3 cupos disponibles por día</div>
+    <h2 class="cta-h">Tu consulta de valoración<br><em>comienza aquí</em></h2>
+    <p class="cta-sub">
+      Consultorio privado · Barrio Milán, Manizales<br>
+      Atención completamente personalizada
+    </p>
+    <div class="cta-actions">
+      <a href="https://wa.me/573242437559" target="_blank">
+        <button class="btn-accent">WhatsApp · 324 243 75 59</button>
+      </a>
+      <a href="https://instagram.com/dra.vanesad" target="_blank">
+        <button class="btn-outline">Instagram · @dra.vanesad</button>
+      </a>
+    </div>
+    <div class="contact-data">
+      Manizales, Caldas, Colombia<br>
+      Consultorio privado · Barrio Milán<br>
+      <a href="mailto:contacto@dravanesadiaz.com">contacto@dravanesadiaz.com</a>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       ██ FOOTER
+  ═══════════════════════════════════════ -->
+  <footer id="footer">
+    <span>© 2025 Dra. Vanesa Díaz Vargas · Médica Estética · Manizales</span>
+    <div class="footer-links">
+      <a href="https://instagram.com/dra.vanesad" target="_blank">Instagram</a>
+      <a href="https://wa.me/573242437559" target="_blank">WhatsApp</a>
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════
+       JAVASCRIPT — Nav activo + progreso + servicios
+  ═══════════════════════════════════════ -->
+  <script>
+    // ── Secciones registradas para el nav activo ──
+    // Si agregas o quitas una sección, actualiza este array
+    const SECTIONS = ['inicio', 'sobre-mi', 'servicios', 'portafolio', 'testimonios', 'contacto'];
+
+    // Scroll suave al hacer clic en nav o dots
+    function scrollTo(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Nav links y side dots
+    document.querySelectorAll('.nav-link, .side-dot').forEach(el => {
+      el.addEventListener('click', () => scrollTo(el.dataset.target));
+    });
+
+    // Actualiza el active según scroll
+    function onScroll() {
+      const sc = document.scrollingElement || document.documentElement;
+      const st = sc.scrollTop;
+      const sh = sc.scrollHeight - sc.clientHeight;
+
+      // Barra de progreso
+      document.getElementById('progress-fill').style.width = (sh > 0 ? (st / sh * 100) : 0) + '%';
+
+      // Shadow en nav
+      document.getElementById('nav').classList.toggle('scrolled', st > 10);
+
+      // Sección activa
+      let active = SECTIONS[0];
+      SECTIONS.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= 70) active = id;
+      });
+
+      document.querySelectorAll('.nav-link, .side-dot').forEach(el => {
+        el.classList.toggle('active', el.dataset.target === active);
+      });
+    }
+
+    document.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // ── Toggle de servicios ──
+    function toggleService(id) {
+      const detail = document.getElementById(id);
+      const card = detail.previousElementSibling;
+      const isOpen = detail.classList.contains('open');
+
+      // Cierra todos
+      document.querySelectorAll('.srv-detail').forEach(d => d.classList.remove('open'));
+      document.querySelectorAll('.srv-card').forEach(c => c.setAttribute('aria-expanded', 'false'));
+
+      // Abre el seleccionado si estaba cerrado
+      if (!isOpen) {
+        detail.classList.add('open');
+        card.setAttribute('aria-expanded', 'true');
+      }
+    }
+  </script>
+
+</body>
+</html>
