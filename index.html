@@ -8,162 +8,210 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --accent:#c4956a; --accent-dark:#a07550;
-      --bg:#ffffff; --bg-soft:#f7f4f0;
-      --text:#1a1a1a; --muted:#7a7570; --border:rgba(0,0,0,0.10);
-      --serif:'Cormorant Garamond',Georgia,serif;
-      --sans:'DM Sans',system-ui,sans-serif;
-      --nav-h:54px;
-    }
-    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
-    body{font-family:var(--sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;}
-    img{display:block;width:100%;height:100%;object-fit:cover;}
-    button{font-family:var(--sans);cursor:pointer;}
-    a{text-decoration:none;}
 
-    .eyebrow{display:flex;align-items:center;gap:10px;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
-    .eyebrow::before{content:'';width:22px;height:0.5px;background:var(--accent);flex-shrink:0;}
-    .sec-title{font-family:var(--serif);font-size:clamp(26px,4vw,36px);font-weight:300;line-height:1.1;}
-    .sec-title em{font-style:italic;color:var(--accent);}
-    .sec-body{font-size:13px;font-weight:300;line-height:1.95;color:var(--muted);max-width:560px;}
-    .btn-dark{font-size:10px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;padding:12px 28px;background:var(--text);color:#f5f0e8;border:none;}
-    .btn-dark:hover{background:#333;}
-    .btn-accent{font-size:10px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;padding:12px 28px;background:var(--accent);color:#fff;border:none;}
-    .btn-accent:hover{background:var(--accent-dark);}
-    .btn-out{font-size:10px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;padding:12px 28px;background:none;color:var(--text);border:0.5px solid var(--border);}
-    .btn-out:hover{background:var(--bg-soft);}
-    .btn-ghost{font-size:10px;color:var(--muted);background:none;border:none;text-decoration:underline;text-underline-offset:4px;letter-spacing:0.1em;text-transform:uppercase;}
+  <style>
+    /* ═══════════════════════════════════
+       VARIABLES GLOBALES
+       Para cambiar colores: edita solo esta sección
+    ═══════════════════════════════════ */
+    :root {
+      --accent:      #c4956a;
+      --accent-dark: #a07550;
+      --bg:          #ffffff;
+      --bg-soft:     #f7f4f0;
+      --bg-dark:     #111110;
+      --text:        #1a1a1a;
+      --muted:       #7a7570;
+      --border:      rgba(0,0,0,0.10);
+      --serif:       'Cormorant Garamond', Georgia, serif;
+      --sans:        'DM Sans', system-ui, sans-serif;
+      --nav-h:       54px;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:var(--sans); color:var(--text); background:var(--bg); -webkit-font-smoothing:antialiased; }
+    img  { display:block; width:100%; height:100%; object-fit:cover; }
+    button { font-family:var(--sans); cursor:pointer; }
+    a { text-decoration:none; color:inherit; }
+
+    .eyebrow { display:flex; align-items:center; gap:10px; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; }
+    .eyebrow::before { content:''; width:22px; height:0.5px; background:var(--accent); flex-shrink:0; }
+    .sec-title { font-family:var(--serif); font-size:clamp(26px,4vw,36px); font-weight:300; line-height:1.1; }
+    .sec-title em { font-style:italic; color:var(--accent); }
+    .sec-body { font-size:13px; font-weight:300; line-height:1.95; color:var(--muted); max-width:560px; }
+    .btn-dark   { font-size:10px; font-weight:500; letter-spacing:0.13em; text-transform:uppercase; padding:12px 28px; background:var(--text); color:#f5f0e8; border:none; transition:background 0.2s; }
+    .btn-dark:hover { background:#333; }
+    .btn-accent { font-size:10px; font-weight:500; letter-spacing:0.13em; text-transform:uppercase; padding:12px 28px; background:var(--accent); color:#fff; border:none; transition:background 0.2s; }
+    .btn-accent:hover { background:var(--accent-dark); }
+    .btn-out    { font-size:10px; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; padding:12px 28px; background:none; color:var(--text); border:0.5px solid var(--border); transition:background 0.2s; }
+    .btn-out:hover { background:var(--bg-soft); }
+    .btn-ghost  { font-size:10px; color:var(--muted); background:none; border:none; text-decoration:underline; text-underline-offset:4px; letter-spacing:0.1em; text-transform:uppercase; }
+    .btn-wa-sm  { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; padding:10px 20px; background:var(--accent); color:#fff; border:none; cursor:pointer; transition:background 0.2s; white-space:nowrap; }
+    .btn-wa-sm:hover { background:var(--accent-dark); }
+    .btn-wa-sm-light { background:rgba(255,255,255,0.12); color:#fff; border:0.5px solid rgba(255,255,255,0.25); }
+    .btn-wa-sm-light:hover { background:rgba(255,255,255,0.2); }
 
     /* NAV */
-    #nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:0 40px;height:var(--nav-h);background:var(--bg);border-bottom:0.5px solid var(--border);transition:box-shadow 0.3s;}
-    #nav.scrolled{box-shadow:0 1px 20px rgba(0,0,0,0.07);}
-    .logo{font-family:var(--serif);font-size:18px;font-weight:300;letter-spacing:0.06em;white-space:nowrap;}
-    .logo em{font-style:italic;color:var(--accent);}
-    .nav-links{display:flex;gap:2px;}
-    .nl{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);padding:5px 10px;background:none;border:none;position:relative;transition:color 0.2s;white-space:nowrap;}
-    .nl::after{content:'';position:absolute;bottom:1px;left:10px;right:10px;height:1px;background:var(--accent);transform:scaleX(0);transition:transform 0.25s;transform-origin:left;}
-    .nl.active{color:var(--text);font-weight:500;}
-    .nl.active::after{transform:scaleX(1);}
-    .nav-cta{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:7px 18px;border:0.5px solid var(--accent);background:none;color:var(--accent);transition:background 0.2s,color 0.2s;white-space:nowrap;}
-    .nav-cta:hover{background:var(--accent);color:#fff;}
-    #prog-bar{position:sticky;top:var(--nav-h);z-index:199;height:2px;background:rgba(0,0,0,0.06);}
-    #prog-fill{height:100%;width:0%;background:var(--accent);transition:width 0.08s linear;}
-    #side-dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:10px;}
-    .sd{width:7px;height:7px;border-radius:50%;border:0.5px solid var(--border);background:transparent;cursor:pointer;transition:background 0.2s,transform 0.2s,border-color 0.2s;position:relative;}
-    .sd.active{background:var(--accent);border-color:var(--accent);transform:scale(1.3);}
-    .sd:hover .sdtip{opacity:1;transform:translateY(-50%) translateX(-8px);}
-    .sdtip{position:absolute;right:18px;top:50%;transform:translateY(-50%) translateX(0);background:var(--bg);border:0.5px solid var(--border);padding:3px 10px;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;color:var(--muted);opacity:0;transition:opacity 0.2s,transform 0.2s;pointer-events:none;font-family:var(--sans);}
+    #nav { position:sticky; top:0; z-index:200; display:flex; justify-content:space-between; align-items:center; padding:0 40px; height:var(--nav-h); background:var(--bg); border-bottom:0.5px solid var(--border); transition:box-shadow 0.3s; }
+    #nav.scrolled { box-shadow:0 1px 20px rgba(0,0,0,0.07); }
+    .logo { font-family:var(--serif); font-size:18px; font-weight:300; letter-spacing:0.06em; white-space:nowrap; }
+    .logo em { font-style:italic; color:var(--accent); }
+    .nav-links { display:flex; gap:2px; }
+    .nl { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); padding:5px 10px; background:none; border:none; position:relative; transition:color 0.2s; white-space:nowrap; }
+    .nl::after { content:''; position:absolute; bottom:1px; left:10px; right:10px; height:1px; background:var(--accent); transform:scaleX(0); transition:transform 0.25s; transform-origin:left; }
+    .nl.active { color:var(--text); font-weight:500; }
+    .nl.active::after { transform:scaleX(1); }
+    .nav-cta { font-size:10px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; padding:7px 18px; border:0.5px solid var(--accent); background:none; color:var(--accent); transition:background 0.2s,color 0.2s; white-space:nowrap; }
+    .nav-cta:hover { background:var(--accent); color:#fff; }
+    #prog-bar  { position:sticky; top:var(--nav-h); z-index:199; height:2px; background:rgba(0,0,0,0.06); }
+    #prog-fill { height:100%; width:0%; background:var(--accent); transition:width 0.08s linear; }
+    #side-dots { position:fixed; right:18px; top:50%; transform:translateY(-50%); z-index:100; display:flex; flex-direction:column; gap:10px; }
+    .sd { width:7px; height:7px; border-radius:50%; border:0.5px solid var(--border); background:transparent; cursor:pointer; transition:background 0.2s,transform 0.2s,border-color 0.2s; position:relative; }
+    .sd.active { background:var(--accent); border-color:var(--accent); transform:scale(1.3); }
+    .sd:hover .sdtip { opacity:1; transform:translateY(-50%) translateX(-8px); }
+    .sdtip { position:absolute; right:18px; top:50%; transform:translateY(-50%) translateX(0); background:var(--bg); border:0.5px solid var(--border); padding:3px 10px; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; white-space:nowrap; color:var(--muted); opacity:0; transition:opacity 0.2s,transform 0.2s; pointer-events:none; font-family:var(--sans); }
 
     /* HERO */
-    #inicio{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - var(--nav-h));border-bottom:0.5px solid var(--border);}
-    .hero-txt{padding:80px 48px 80px 40px;display:flex;flex-direction:column;justify-content:center;}
-    .hero-h1{font-family:var(--serif);font-size:clamp(38px,5vw,58px);font-weight:300;line-height:1.05;margin-bottom:20px;}
-    .hero-h1 em{font-style:italic;color:var(--accent);}
-    .hero-sub{font-size:14px;font-weight:300;line-height:1.9;color:var(--muted);max-width:340px;margin-bottom:36px;}
-    .hero-btns{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
-    .hero-vis{position:relative;overflow:hidden;background:#111;}
-    .hero-vis img{width:100%;height:100%;object-fit:cover;object-position:center top;}
-    .stat-pill{position:absolute;bottom:28px;left:24px;background:rgba(255,255,255,0.95);border:0.5px solid var(--border);padding:12px 18px;}
-    .stat-n{font-family:var(--serif);font-size:30px;font-weight:300;color:var(--accent);line-height:1;}
-    .stat-l{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+    #inicio { display:grid; grid-template-columns:1fr 1fr; min-height:calc(100vh - var(--nav-h)); border-bottom:0.5px solid var(--border); }
+    .hero-txt { padding:80px 48px 80px 40px; display:flex; flex-direction:column; justify-content:center; }
+    .hero-h1 { font-family:var(--serif); font-size:clamp(38px,5vw,58px); font-weight:300; line-height:1.05; margin-bottom:20px; }
+    .hero-h1 em { font-style:italic; color:var(--accent); }
+    .hero-sub { font-size:14px; font-weight:300; line-height:1.9; color:var(--muted); max-width:340px; margin-bottom:36px; }
+    .hero-btns { display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+    .hero-vis { position:relative; overflow:hidden; background:#111; }
+    .hero-vis img { width:100%; height:100%; object-fit:cover; object-position:center top; }
+    .stat-pill { position:absolute; bottom:28px; left:24px; background:rgba(255,255,255,0.95); border:0.5px solid var(--border); padding:12px 18px; }
+    .stat-n { font-family:var(--serif); font-size:30px; font-weight:300; color:var(--accent); line-height:1; }
+    .stat-l { font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-top:4px; }
 
     /* MARQUEE */
-    #marquee{background:var(--bg-soft);border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);padding:12px 40px;display:flex;gap:40px;overflow:hidden;}
-    .mq{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);white-space:nowrap;display:flex;align-items:center;gap:14px;}
-    .mqdot{width:3px;height:3px;background:var(--accent);border-radius:50%;flex-shrink:0;}
+    #marquee { background:var(--bg-soft); border-top:0.5px solid var(--border); border-bottom:0.5px solid var(--border); padding:12px 40px; display:flex; gap:40px; overflow:hidden; }
+    .mq { font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); white-space:nowrap; display:flex; align-items:center; gap:14px; }
+    .mqdot { width:3px; height:3px; background:var(--accent); border-radius:50%; flex-shrink:0; }
 
     /* SOBRE MÍ */
-    #sobre-mi{display:grid;grid-template-columns:1fr 1.3fr;border-bottom:0.5px solid var(--border);min-height:500px;}
-    .dr-vis{overflow:hidden;position:relative;}
-    .dr-vis img{width:100%;height:100%;object-fit:cover;object-position:center top;}
-    .dr-txt{padding:64px 48px;display:flex;flex-direction:column;justify-content:center;}
-    .dr-name{font-family:var(--serif);font-size:34px;font-weight:300;margin-bottom:4px;}
-    .dr-name em{font-style:italic;color:var(--accent);}
-    .dr-role{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:22px;}
-    .dr-bio{font-size:13px;font-weight:300;line-height:1.95;color:var(--muted);margin-bottom:14px;}
-    .creds{display:flex;flex-direction:column;gap:10px;margin-top:6px;}
-    .cred{display:flex;gap:12px;font-size:12px;color:var(--muted);line-height:1.6;}
-    .creddot{width:4px;height:4px;background:var(--accent);border-radius:50%;margin-top:7px;flex-shrink:0;}
-    .badges{display:flex;gap:8px;margin-top:22px;flex-wrap:wrap;}
-    .badge{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border:0.5px solid var(--accent);color:var(--accent);}
+    #sobre-mi { display:grid; grid-template-columns:1fr 1.3fr; border-bottom:0.5px solid var(--border); min-height:500px; }
+    .dr-vis { overflow:hidden; }
+    .dr-vis img { width:100%; height:100%; object-fit:cover; object-position:center top; }
+    .dr-txt { padding:64px 48px; display:flex; flex-direction:column; justify-content:center; }
+    .dr-name { font-family:var(--serif); font-size:34px; font-weight:300; margin-bottom:4px; }
+    .dr-name em { font-style:italic; color:var(--accent); }
+    .dr-role { font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:22px; }
+    .dr-bio { font-size:13px; font-weight:300; line-height:1.95; color:var(--muted); margin-bottom:14px; }
+    .creds { display:flex; flex-direction:column; gap:10px; margin-top:6px; }
+    .cred { display:flex; gap:12px; font-size:12px; color:var(--muted); line-height:1.6; }
+    .creddot { width:4px; height:4px; background:var(--accent); border-radius:50%; margin-top:7px; flex-shrink:0; }
+    .badges { display:flex; gap:8px; margin-top:22px; flex-wrap:wrap; }
+    .badge { font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:5px 14px; border:0.5px solid var(--accent); color:var(--accent); }
 
-    /* SERVICIOS */
-    #servicios{padding:72px 40px;border-bottom:0.5px solid var(--border);}
-    .sec-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;}
-    .srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
-    .srv-wrap{background:var(--bg);}
-    .srv-img{height:180px;overflow:hidden;}
-    .srv-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;}
-    .srv-wrap:hover .srv-img img{transform:scale(1.04);}
-    .srv-card{padding:22px 20px;width:100%;text-align:left;background:none;border:none;cursor:pointer;transition:background 0.18s;}
-    .srv-card:hover{background:var(--bg-soft);}
-    .srv-num{font-family:var(--serif);font-size:12px;color:var(--accent);margin-bottom:10px;}
-    .srv-name{font-size:13px;font-weight:500;margin-bottom:6px;}
-    .srv-desc{font-size:12px;color:var(--muted);line-height:1.75;margin-bottom:12px;}
-    .srv-cta{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:6px;}
-    .srv-cta::after{content:'→';transition:transform 0.2s;}
-    .srv-card[aria-expanded="true"] .srv-cta::after{transform:rotate(90deg);}
-    .srv-detail{background:var(--bg-soft);border-top:0.5px solid var(--border);padding:18px 20px;display:none;}
-    .srv-detail.open{display:block;}
-    .srv-dtitle{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-    .srv-tags{display:flex;flex-wrap:wrap;gap:8px;}
-    .srv-tag{font-size:11px;padding:4px 12px;border:0.5px solid var(--border);color:var(--muted);}
-    .srv-proto{margin-top:12px;font-size:11px;color:var(--accent);letter-spacing:0.06em;}
+    /* PROTAGONISTAS */
+    #protagonistas { padding:72px 40px; border-bottom:0.5px solid var(--border); }
+    .pro-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); margin-top:40px; }
+    .pro-card { background:var(--bg-dark); color:#fff; display:flex; flex-direction:column; overflow:hidden; }
+    .pro-img { height:260px; overflow:hidden; position:relative; }
+    .pro-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease; filter:brightness(0.85); }
+    .pro-card:hover .pro-img img { transform:scale(1.04); }
+    .pro-num { position:absolute; top:16px; left:16px; font-family:var(--serif); font-size:13px; color:rgba(255,255,255,0.5); }
+    .pro-body { padding:28px 24px 32px; display:flex; flex-direction:column; flex:1; }
+    .pro-name { font-family:var(--serif); font-size:26px; font-weight:300; line-height:1.1; margin-bottom:6px; }
+    .pro-name em { font-style:italic; color:var(--accent); }
+    .pro-benefit { font-size:13px; font-weight:300; color:rgba(255,255,255,0.55); line-height:1.8; margin-bottom:20px; }
+    .pro-for-label { font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+    .pro-for { font-size:12px; color:rgba(255,255,255,0.7); line-height:1.7; margin-bottom:24px; flex:1; }
+    .pro-divider { height:0.5px; background:rgba(255,255,255,0.1); margin-bottom:24px; }
+    .pro-duration { font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:16px; }
+
+    /* ESPECIALES */
+    #especiales { padding:72px 40px; background:var(--bg-soft); border-bottom:0.5px solid var(--border); }
+    .esp-grid { margin-top:40px; display:flex; flex-direction:column; }
+    .esp-item { border-top:0.5px solid var(--border); }
+    .esp-item:last-child { border-bottom:0.5px solid var(--border); }
+    .esp-trigger { width:100%; display:grid; grid-template-columns:40px 1fr auto; align-items:center; gap:16px; padding:20px 0; background:none; border:none; cursor:pointer; text-align:left; transition:padding-left 0.15s; }
+    .esp-trigger:hover { padding-left:8px; }
+    .esp-num { font-family:var(--serif); font-size:13px; color:var(--accent); }
+    .esp-name { font-size:14px; font-weight:500; color:var(--text); }
+    .esp-arrow { font-size:18px; color:var(--muted); transition:transform 0.25s; flex-shrink:0; }
+    .esp-trigger[aria-expanded="true"] .esp-arrow { transform:rotate(45deg); color:var(--accent); }
+    .esp-panel { display:none; padding:0 0 28px 56px; }
+    .esp-panel.open { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+    .esp-desc { font-size:13px; font-weight:300; line-height:1.9; color:var(--muted); }
+    .esp-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .esp-tag { font-size:11px; padding:4px 12px; border:0.5px solid var(--border); color:var(--muted); background:var(--bg); }
+    .esp-right { display:flex; flex-direction:column; justify-content:center; }
+    .esp-proto { font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; }
 
     /* PORTAFOLIO */
-    #portafolio{padding:72px 40px;background:var(--bg-soft);border-bottom:0.5px solid var(--border);}
-    .ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:36px;}
-    .caso{border:0.5px solid var(--border);background:var(--bg);overflow:hidden;}
-    .caso-imgs{display:grid;grid-template-columns:1fr 1fr;height:200px;}
-    .caso-label{position:relative;overflow:hidden;}
-    .caso-label img{width:100%;height:100%;object-fit:cover;}
-    .caso-label span{position:absolute;bottom:0;left:0;right:0;text-align:center;background:rgba(0,0,0,0.38);color:#fff;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;padding:4px 0;}
-    .caso-single{height:260px;overflow:hidden;position:relative;}
-    .caso-single img{width:100%;height:100%;object-fit:cover;object-position:center;}
-    .caso-single-badge{position:absolute;top:10px;left:10px;background:rgba(0,0,0,0.42);color:#fff;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;padding:3px 10px;}
-    .caso-info{padding:12px 14px;border-top:0.5px solid var(--border);}
-    .caso-name{font-size:13px;font-weight:500;}
-    .caso-det{font-size:11px;color:var(--muted);margin-top:3px;}
-    .ba-note{margin-top:18px;font-size:12px;font-style:italic;color:var(--muted);}
-    .ba-note a{color:var(--accent);}
+    #portafolio { padding:72px 40px; border-bottom:0.5px solid var(--border); }
+    .ba-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:36px; }
+    .caso { border:0.5px solid var(--border); background:var(--bg); overflow:hidden; }
+    .caso-duo { display:grid; grid-template-columns:1fr 1fr; height:210px; }
+    .caso-panel { position:relative; overflow:hidden; }
+    .caso-panel img { width:100%; height:100%; object-fit:cover; }
+    .caso-panel-label { position:absolute; bottom:0; left:0; right:0; text-align:center; padding:5px 0; background:rgba(0,0,0,0.38); font-size:9px; letter-spacing:0.14em; text-transform:uppercase; color:#fff; }
+    .caso-single { height:240px; overflow:hidden; position:relative; }
+    .caso-single img { width:100%; height:100%; object-fit:cover; }
+    .caso-badge { position:absolute; top:10px; left:10px; background:rgba(0,0,0,0.42); color:#fff; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; padding:3px 10px; }
+    .caso-info { padding:14px 16px; border-top:0.5px solid var(--border); }
+    .caso-name { font-size:13px; font-weight:500; }
+    .caso-det  { font-size:11px; color:var(--muted); margin-top:3px; }
+    .ba-note   { margin-top:18px; font-size:12px; font-style:italic; color:var(--muted); }
+    .ba-note a { color:var(--accent); }
 
-    /* TESTIMONIOS */
-    #testimonios{padding:72px 40px;border-bottom:0.5px solid var(--border);}
-    .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px;}
-    .test-card{padding:24px;border:0.5px solid var(--border);}
-    .stars{font-size:12px;color:var(--accent);letter-spacing:2px;margin-bottom:12px;}
-    .test-txt{font-family:var(--serif);font-size:15px;font-style:italic;font-weight:300;line-height:1.8;margin-bottom:16px;}
-    .test-auth{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
+    /* ═══════════════════════════════════
+       TESTIMONIOS — sección "próximamente"
+    ═══════════════════════════════════ */
+    #testimonios { padding:72px 40px; background:var(--bg-soft); border-bottom:0.5px solid var(--border); }
+    .test-coming {
+      margin-top:48px;
+      display:flex; flex-direction:column; align-items:center;
+      text-align:center; padding:56px 40px;
+      border:0.5px dashed rgba(196,149,106,0.35);
+    }
+    .test-coming-icon {
+      width:48px; height:48px; border-radius:50%;
+      border:0.5px solid var(--accent);
+      display:flex; align-items:center; justify-content:center;
+      margin-bottom:20px;
+    }
+    .test-coming-icon svg { width:20px; height:20px; stroke:var(--accent); fill:none; stroke-width:1.5; }
+    .test-coming-title { font-family:var(--serif); font-size:26px; font-weight:300; margin-bottom:12px; line-height:1.2; }
+    .test-coming-title em { font-style:italic; color:var(--accent); }
+    .test-coming-sub { font-size:13px; font-weight:300; color:var(--muted); line-height:1.9; max-width:440px; }
 
     /* CONTACTO */
-    #contacto{padding:88px 40px;text-align:center;border-bottom:0.5px solid var(--border);}
-    .cta-badge{display:inline-block;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;padding:6px 18px;border:0.5px solid var(--accent);color:var(--accent);margin-bottom:28px;}
-    .cta-h{font-family:var(--serif);font-size:clamp(32px,5vw,50px);font-weight:300;line-height:1.2;margin-bottom:12px;}
-    .cta-h em{font-style:italic;color:var(--accent);}
-    .cta-sub{font-size:13px;color:var(--muted);margin-bottom:36px;line-height:1.8;}
-    .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;}
-    .contact-data{font-size:12px;color:var(--muted);line-height:2.4;}
-    .contact-data a{color:var(--accent);}
+    #contacto { padding:88px 40px; text-align:center; border-bottom:0.5px solid var(--border); }
+    .cta-badge { display:inline-block; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; padding:6px 18px; border:0.5px solid var(--accent); color:var(--accent); margin-bottom:28px; }
+    .cta-h { font-family:var(--serif); font-size:clamp(32px,5vw,50px); font-weight:300; line-height:1.2; margin-bottom:12px; }
+    .cta-h em { font-style:italic; color:var(--accent); }
+    .cta-sub { font-size:13px; color:var(--muted); margin-bottom:36px; line-height:1.8; }
+    .cta-row { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:40px; }
+    .contact-data { font-size:12px; color:var(--muted); line-height:2.4; }
+    .contact-data a { color:var(--accent); }
 
     /* FOOTER */
-    #footer{padding:22px 40px;border-top:0.5px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted);}
-    .foot-links{display:flex;gap:20px;}
-    .foot-links a{color:var(--muted);}
-    .foot-links a:hover{color:var(--accent);}
+    #footer { padding:22px 40px; border-top:0.5px solid var(--border); display:flex; justify-content:space-between; align-items:center; font-size:11px; color:var(--muted); }
+    .foot-links { display:flex; gap:20px; }
+    .foot-links a:hover { color:var(--accent); }
 
     /* RESPONSIVE */
-    @media(max-width:768px){
-      #nav{padding:0 20px;} .nav-links{display:none;}
-      #inicio{grid-template-columns:1fr;} .hero-vis{min-height:320px;} .hero-txt{padding:48px 20px;}
-      #sobre-mi{grid-template-columns:1fr;} .dr-vis{min-height:320px;} .dr-txt{padding:36px 20px;}
-      .srv-grid{grid-template-columns:1fr 1fr;} .ba-grid,.test-grid{grid-template-columns:1fr;}
-      #servicios,#portafolio,#testimonios,#contacto{padding:48px 20px;}
-      #side-dots{display:none;} #footer{flex-direction:column;gap:12px;text-align:center;}
+    @media(max-width:900px) {
+      .pro-grid { grid-template-columns:1fr; }
+      .pro-img  { height:200px; }
+      .esp-panel.open { grid-template-columns:1fr; gap:16px; }
     }
-    @media(max-width:480px){.srv-grid{grid-template-columns:1fr;}}
+    @media(max-width:768px) {
+      #nav { padding:0 20px; } .nav-links { display:none; }
+      #inicio { grid-template-columns:1fr; } .hero-vis { min-height:320px; } .hero-txt { padding:48px 20px; }
+      #sobre-mi { grid-template-columns:1fr; } .dr-vis { min-height:320px; } .dr-txt { padding:36px 20px; }
+      #protagonistas,#especiales,#portafolio,#testimonios,#contacto { padding:48px 20px; }
+      .ba-grid { grid-template-columns:1fr; }
+      #side-dots { display:none; }
+      #footer { flex-direction:column; gap:12px; text-align:center; }
+      .esp-panel { padding-left:20px; }
+      .esp-trigger { grid-template-columns:32px 1fr auto; }
+      .test-coming { padding:40px 20px; }
+    }
   </style>
 </head>
 <body>
@@ -174,7 +222,7 @@
   <div class="nav-links">
     <button class="nl active" data-t="inicio">Inicio</button>
     <button class="nl" data-t="sobre-mi">Sobre mí</button>
-    <button class="nl" data-t="servicios">Servicios</button>
+    <button class="nl" data-t="protagonistas">Tratamientos</button>
     <button class="nl" data-t="portafolio">Portafolio</button>
     <button class="nl" data-t="testimonios">Testimonios</button>
     <button class="nl" data-t="contacto">Contacto</button>
@@ -186,11 +234,12 @@
 <div id="side-dots">
   <div class="sd active" data-t="inicio"><span class="sdtip">Inicio</span></div>
   <div class="sd" data-t="sobre-mi"><span class="sdtip">Sobre mí</span></div>
-  <div class="sd" data-t="servicios"><span class="sdtip">Servicios</span></div>
+  <div class="sd" data-t="protagonistas"><span class="sdtip">Tratamientos</span></div>
   <div class="sd" data-t="portafolio"><span class="sdtip">Portafolio</span></div>
   <div class="sd" data-t="testimonios"><span class="sdtip">Testimonios</span></div>
   <div class="sd" data-t="contacto"><span class="sdtip">Contacto</span></div>
 </div>
+
 
 <!-- ██ HERO -->
 <section id="inicio">
@@ -199,7 +248,7 @@
     <h1 class="hero-h1">Realzo lo que <em>ya eres</em></h1>
     <p class="hero-sub">Médica estética con maestría internacional en la Escuela de Salamanca. Procedimientos seguros, personalizados y basados en evidencia científica.</p>
     <div class="hero-btns">
-      <button class="btn-dark" onclick="ir('servicios')">Ver servicios</button>
+      <button class="btn-dark" onclick="ir('protagonistas')">Ver tratamientos</button>
       <button class="btn-ghost" onclick="ir('sobre-mi')">Conocer más →</button>
     </div>
   </div>
@@ -212,23 +261,25 @@
   </div>
 </section>
 
+
 <!-- ██ MARQUEE -->
 <div id="marquee">
-  <div class="mq">PRP Facial<span class="mqdot"></span></div>
-  <div class="mq">PRP Capilar<span class="mqdot"></span></div>
+  <div class="mq">Bótox Facial<span class="mqdot"></span></div>
+  <div class="mq">Plasma Rico en Plaquetas<span class="mqdot"></span></div>
   <div class="mq">Peeling Químico<span class="mqdot"></span></div>
   <div class="mq">Mesoterapia Hidratante<span class="mqdot"></span></div>
   <div class="mq">Mesoterapia Despigmentante<span class="mqdot"></span></div>
-  <div class="mq">Toxina Botulínica<span class="mqdot"></span></div>
+  <div class="mq">PRP Capilar<span class="mqdot"></span></div>
   <div class="mq">Bótox Axilar<span class="mqdot"></span></div>
-  <div class="mq">Cauterización y Remoción<span class="mqdot"></span></div>
   <div class="mq">Rejuvenecimiento Facial<span class="mqdot"></span></div>
+  <div class="mq">Cauterización y Remoción<span class="mqdot"></span></div>
 </div>
+
 
 <!-- ██ SOBRE MÍ -->
 <section id="sobre-mi">
   <div class="dr-vis">
-    <img src="perfil.jpg" alt="Dra. Vanesa Díaz Vargas con certificado en su consultorio" />
+    <img src="perfil.jpg" alt="Dra. Vanesa Díaz Vargas en su consultorio" />
   </div>
   <div class="dr-txt">
     <div class="eyebrow">La especialista</div>
@@ -250,203 +301,293 @@
   </div>
 </section>
 
-<!-- ██ SERVICIOS -->
-<section id="servicios">
-  <div class="sec-hdr">
-    <div><div class="eyebrow">Tratamientos</div><h2 class="sec-title">Servicios</h2></div>
-    <span style="font-size:11px;color:var(--muted);">Toca para ver detalles</span>
-  </div>
-  <div class="srv-grid">
 
-    <!-- SERVICIO 01 -->
-    <div class="srv-wrap">
-      <div class="srv-img"><img src="prp-instrumento.png" alt="PRP Facial" /></div>
-      <button class="srv-card" onclick="toggleSrv('s01')" aria-expanded="false">
-        <div class="srv-num">01</div><div class="srv-name">PRP Facial</div>
-        <div class="srv-desc">Factores de crecimiento de tu propia sangre para estimular la regeneración y rejuvenecimiento de la piel.</div>
-        <div class="srv-cta">Ver beneficios</div>
-      </button>
-      <div class="srv-detail" id="s01">
-        <div class="srv-dtitle">Beneficios</div>
-        <div class="srv-tags"><span class="srv-tag">Estimula colágeno</span><span class="srv-tag">Mejora textura</span><span class="srv-tag">Luminosidad</span><span class="srv-tag">Regeneración cutánea</span></div>
-        <div class="srv-proto">Protocolo: 3 a 4 sesiones iniciales</div>
+<!-- ██ TRATAMIENTOS PROTAGONISTAS -->
+<section id="protagonistas">
+  <div class="eyebrow">Lo más solicitado</div>
+  <h2 class="sec-title">Tratamientos <em>protagonistas</em></h2>
+  <p class="sec-body" style="margin-top:12px;">Tres procedimientos que concentran lo mejor de la medicina estética moderna — resultados visibles, seguros y completamente naturales.</p>
+
+  <div class="pro-grid">
+
+    <!-- PROTAGONISTA 01 -->
+    <div class="pro-card">
+      <div class="pro-img">
+        <img src="botox-instrumento.png" alt="Toxina Botulínica Facial" />
+        <div class="pro-num">01</div>
+      </div>
+      <div class="pro-body">
+        <div class="pro-name">Toxina <em>Botulínica</em></div>
+        <p class="pro-benefit">Suaviza las arrugas de expresión de frente, entrecejo y contorno de ojos con un resultado completamente natural — no congela, armoniza.</p>
+        <div class="pro-for-label">Ideal para</div>
+        <p class="pro-for">Quienes notan las primeras líneas de expresión y quieren prevenirlas, o quienes ya tienen arrugas establecidas y buscan suavizarlas sin perder naturalidad.</p>
+        <div class="pro-divider"></div>
+        <div class="pro-duration">Duración: 6 a 8 meses</div>
+        <a href="https://wa.me/573242437559?text=Hola%20Dra.%20Vanesa%2C%20me%20interesa%20el%20tratamiento%20de%20toxina%20botul%C3%ADnica" target="_blank">
+          <button class="btn-wa-sm btn-wa-sm-light">Agendar por WhatsApp →</button>
+        </a>
       </div>
     </div>
 
-    <!-- SERVICIO 02 -->
-    <div class="srv-wrap">
-      <div class="srv-img"><img src="prp-instrumento.png" alt="PRP Capilar" /></div>
-      <button class="srv-card" onclick="toggleSrv('s02')" aria-expanded="false">
-        <div class="srv-num">02</div><div class="srv-name">PRP Capilar</div>
-        <div class="srv-desc">Factores de crecimiento para estimular el folículo piloso y combatir la caída del cabello.</div>
-        <div class="srv-cta">Ver beneficios</div>
-      </button>
-      <div class="srv-detail" id="s02">
-        <div class="srv-dtitle">Beneficios</div>
-        <div class="srv-tags"><span class="srv-tag">Estimula crecimiento</span><span class="srv-tag">Reduce caída</span><span class="srv-tag">Fortalece folículo</span></div>
-        <div class="srv-proto">Protocolo: 3 a 4 sesiones iniciales</div>
+    <!-- PROTAGONISTA 02 -->
+    <div class="pro-card">
+      <div class="pro-img">
+        <img src="prp-instrumento.png" alt="Plasma Rico en Plaquetas" />
+        <div class="pro-num">02</div>
+      </div>
+      <div class="pro-body">
+        <div class="pro-name">Plasma Rico en <em>Plaquetas</em></div>
+        <p class="pro-benefit">Tu propia sangre, procesada y reinyectada para estimular colágeno, mejorar textura y devolverle luminosidad a la piel desde adentro.</p>
+        <div class="pro-for-label">Ideal para</div>
+        <p class="pro-for">Pieles opacas, con textura irregular o signos tempranos de envejecimiento. También para quienes buscan una alternativa 100% natural sin químicos externos.</p>
+        <div class="pro-divider"></div>
+        <div class="pro-duration">Protocolo: 3 a 4 sesiones iniciales</div>
+        <a href="https://wa.me/573242437559?text=Hola%20Dra.%20Vanesa%2C%20me%20interesa%20el%20plasma%20rico%20en%20plaquetas" target="_blank">
+          <button class="btn-wa-sm btn-wa-sm-light">Agendar por WhatsApp →</button>
+        </a>
       </div>
     </div>
 
-    <!-- SERVICIO 03 -->
-    <div class="srv-wrap">
-      <div class="srv-img"><img src="dermapen.png" alt="Peeling Químico" /></div>
-      <button class="srv-card" onclick="toggleSrv('s03')" aria-expanded="false">
-        <div class="srv-num">03</div><div class="srv-name">Peeling Químico</div>
-        <div class="srv-desc">Ácidos AHA, BHA y activos médicos para renovar las capas superficiales de la piel.</div>
-        <div class="srv-cta">Ver beneficios</div>
-      </button>
-      <div class="srv-detail" id="s03">
-        <div class="srv-dtitle">Beneficios</div>
-        <div class="srv-tags"><span class="srv-tag">Mejora manchas</span><span class="srv-tag">Disminuye acné</span><span class="srv-tag">Luminosidad</span><span class="srv-tag">Renovación celular</span></div>
-        <div class="srv-proto">Protocolo: 3 a 4 sesiones</div>
+    <!-- PROTAGONISTA 03 -->
+    <div class="pro-card">
+      <div class="pro-img">
+        <img src="dermapen.png" alt="Peeling Químico" />
+        <div class="pro-num">03</div>
       </div>
-    </div>
-
-    <!-- SERVICIO 04 -->
-    <div class="srv-wrap">
-      <div class="srv-img"><img src="dermapen.png" alt="Mesoterapia Hidratante" /></div>
-      <button class="srv-card" onclick="toggleSrv('s04')" aria-expanded="false">
-        <div class="srv-num">04</div><div class="srv-name">Mesoterapia Hidratante</div>
-        <div class="srv-desc">Microinyecciones de ácido hialurónico para hidratación profunda y mejora de la calidad de la piel.</div>
-        <div class="srv-cta">Ver beneficios</div>
-      </button>
-      <div class="srv-detail" id="s04">
-        <div class="srv-dtitle">Beneficios</div>
-        <div class="srv-tags"><span class="srv-tag">Hidratación profunda</span><span class="srv-tag">Piel luminosa</span><span class="srv-tag">Mejora elasticidad</span></div>
-        <div class="srv-proto">Duración del efecto: 3 meses</div>
-      </div>
-    </div>
-
-    <!-- SERVICIO 05 -->
-    <div class="srv-wrap">
-      <div class="srv-img"><img src="dermapen.png" alt="Mesoterapia Despigmentante" /></div>
-      <button class="srv-card" onclick="toggleSrv('s05')" aria-expanded="false">
-        <div class="srv-num">05</div><div class="srv-name">Mesoterapia Despigmentante</div>
-        <div class="srv-desc">Ácido tranexámico y activos despigmentantes para manchas, melasma y unificación del tono.</div>
-        <div class="srv-cta">Ver beneficios</div>
-      </button>
-      <div class="srv-detail" id="s05">
-        <div class="srv-dtitle">Beneficios</div>
-        <div class="srv-tags"><span class="srv-tag">Disminuye manchas</span><span class="srv-tag">Mejora melasma</span><span class="srv-tag">Unifica tono</span><span class="srv-tag">Luminosidad facial</span></div>
-        <div class="srv-proto">Protocolo: 3 a 5 sesiones</div>
-      </div>
-    </div>
-
-    <!-- SERVICIO 06 -->
-    <div class="srv-wrap">
-      <div class="srv-img"><img src="dermapen.png" alt="Rejuvenecimiento Facial" /></div>
-      <button class="srv-card" onclick="toggleSrv('s06')" aria-expanded="false">
-        <div class="srv-num">06</div><div class="srv-name">Rejuvenecimiento Facial</div>
-        <div class="srv-desc">Protocolo con retinal, centella asiática, PDNR de salmón y ácido hialurónico. Con Skinretin Xpert (Mesoestetic).</div>
-        <div class="srv-cta">Ver beneficios</div>
-      </button>
-      <div class="srv-detail" id="s06">
-        <div class="srv-dtitle">Beneficios</div>
-        <div class="srv-tags"><span class="srv-tag">Renovación celular</span><span class="srv-tag">Textura y luminosidad</span><span class="srv-tag">Efecto antiedad</span></div>
-        <div class="srv-proto">Ideal para signos tempranos o moderados de envejecimiento</div>
-      </div>
-    </div>
-
-    <!-- SERVICIO 07 -->
-    <div class="srv-wrap">
-      <div class="srv-img"><img src="botox-instrumento.png" alt="Toxina Botulínica" /></div>
-      <button class="srv-card" onclick="toggleSrv('s07')" aria-expanded="false">
-        <div class="srv-num">07</div><div class="srv-name">Toxina Botulínica</div>
-        <div class="srv-desc">Relajación temporal de los músculos responsables de las arrugas de expresión para un resultado natural.</div>
-        <div class="srv-cta">Ver beneficios</div>
-      </button>
-      <div class="srv-detail" id="s07">
-        <div class="srv-dtitle">Zonas de tratamiento</div>
-        <div class="srv-tags"><span class="srv-tag">Frente</span><span class="srv-tag">Entrecejo</span><span class="srv-tag">Contorno de ojos</span><span class="srv-tag">Previene arrugas profundas</span></div>
-        <div class="srv-proto">Duración: 6 a 8 meses</div>
-      </div>
-    </div>
-
-    <!-- SERVICIO 08 -->
-    <div class="srv-wrap">
-      <div class="srv-img"><img src="botox-instrumento.png" alt="Bótox Axilar" /></div>
-      <button class="srv-card" onclick="toggleSrv('s08')" aria-expanded="false">
-        <div class="srv-num">08</div><div class="srv-name">Bótox Axilar</div>
-        <div class="srv-desc">Bloqueo temporal de glándulas sudoríparas para controlar la hiperhidrosis axilar de forma segura.</div>
-        <div class="srv-cta">Ver beneficios</div>
-      </button>
-      <div class="srv-detail" id="s08">
-        <div class="srv-dtitle">Beneficios</div>
-        <div class="srv-tags"><span class="srv-tag">Reduce sudoración 90%</span><span class="srv-tag">Elimina mal olor</span><span class="srv-tag">Procedimiento ambulatorio</span></div>
-        <div class="srv-proto">Duración: 6 a 8 meses</div>
-      </div>
-    </div>
-
-    <!-- SERVICIO 09 -->
-    <div class="srv-wrap">
-      <div class="srv-img"><img src="cauterizador.png" alt="Cauterización y Remoción" /></div>
-      <button class="srv-card" onclick="toggleSrv('s09')" aria-expanded="false">
-        <div class="srv-num">09</div><div class="srv-name">Cauterización y Remoción</div>
-        <div class="srv-desc">Retiro de lesiones benignas de la piel — lunares y lesiones afines — de forma segura y ambulatoria.</div>
-        <div class="srv-cta">Ver beneficios</div>
-      </button>
-      <div class="srv-detail" id="s09">
-        <div class="srv-dtitle">Beneficios</div>
-        <div class="srv-tags"><span class="srv-tag">Eliminación precisa</span><span class="srv-tag">Ambulatorio</span><span class="srv-tag">Recuperación rápida</span></div>
-        <div class="srv-proto">Resultado inmediato · Sin hospitalización</div>
+      <div class="pro-body">
+        <div class="pro-name">Peeling <em>Químico</em></div>
+        <p class="pro-benefit">Ácidos seleccionados según tu tipo de piel para renovar células, cerrar poros, reducir manchas y revelar una piel más luminosa y uniforme.</p>
+        <div class="pro-for-label">Ideal para</div>
+        <p class="pro-for">Pieles con manchas, tono desigual, acné activo o cicatrices superficiales. Un clásico de la medicina estética que sigue dando los mejores resultados costo-beneficio.</p>
+        <div class="pro-divider"></div>
+        <div class="pro-duration">Protocolo: 3 a 4 sesiones</div>
+        <a href="https://wa.me/573242437559?text=Hola%20Dra.%20Vanesa%2C%20me%20interesa%20el%20peeling%20qu%C3%ADmico" target="_blank">
+          <button class="btn-wa-sm btn-wa-sm-light">Agendar por WhatsApp →</button>
+        </a>
       </div>
     </div>
 
   </div>
 </section>
 
+
+<!-- ██ TRATAMIENTOS ESPECIALES -->
+<section id="especiales">
+  <div class="eyebrow">Portafolio completo</div>
+  <h2 class="sec-title">Tratamientos <em>especiales</em></h2>
+  <p class="sec-body" style="margin-top:12px;">Procedimientos específicos para necesidades puntuales — todos realizados con el mismo criterio médico y nivel de personalización.</p>
+
+  <div class="esp-grid">
+
+    <div class="esp-item">
+      <button class="esp-trigger" onclick="toggleEsp('e01')" aria-expanded="false">
+        <span class="esp-num">01</span>
+        <span class="esp-name">PRP Cuero Cabelludo</span>
+        <span class="esp-arrow">+</span>
+      </button>
+      <div class="esp-panel" id="e01">
+        <div>
+          <p class="esp-desc">Factores de crecimiento obtenidos de tu propia sangre se inyectan en el cuero cabelludo para estimular el folículo piloso, frenar la caída y densificar el cabello de forma progresiva y completamente natural.</p>
+          <div class="esp-tags">
+            <span class="esp-tag">Estimula crecimiento</span><span class="esp-tag">Reduce caída</span>
+            <span class="esp-tag">Fortalece folículo</span><span class="esp-tag">100% natural</span>
+          </div>
+        </div>
+        <div class="esp-right">
+          <div class="esp-proto">Protocolo: 3 a 4 sesiones iniciales</div>
+          <a href="https://wa.me/573242437559?text=Hola%20Dra.%20Vanesa%2C%20me%20interesa%20el%20PRP%20capilar" target="_blank">
+            <button class="btn-wa-sm">Preguntar por WhatsApp →</button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="esp-item">
+      <button class="esp-trigger" onclick="toggleEsp('e02')" aria-expanded="false">
+        <span class="esp-num">02</span>
+        <span class="esp-name">Mesoterapia Facial Hidratante</span>
+        <span class="esp-arrow">+</span>
+      </button>
+      <div class="esp-panel" id="e02">
+        <div>
+          <p class="esp-desc">Microinyecciones de ácido hialurónico que actúan directamente en las capas profundas de la piel para una hidratación que ninguna crema puede alcanzar. La piel queda tersa, luminosa y visiblemente más saludable.</p>
+          <div class="esp-tags">
+            <span class="esp-tag">Hidratación profunda</span><span class="esp-tag">Luminosidad inmediata</span>
+            <span class="esp-tag">Mejora elasticidad</span>
+          </div>
+        </div>
+        <div class="esp-right">
+          <div class="esp-proto">Duración del efecto: 3 meses</div>
+          <a href="https://wa.me/573242437559?text=Hola%20Dra.%20Vanesa%2C%20me%20interesa%20la%20mesoterapia%20hidratante" target="_blank">
+            <button class="btn-wa-sm">Preguntar por WhatsApp →</button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="esp-item">
+      <button class="esp-trigger" onclick="toggleEsp('e03')" aria-expanded="false">
+        <span class="esp-num">03</span>
+        <span class="esp-name">Mesoterapia Facial Despigmentante</span>
+        <span class="esp-arrow">+</span>
+      </button>
+      <div class="esp-panel" id="e03">
+        <div>
+          <p class="esp-desc">Ácido tranexámico y activos despigmentantes inyectados directamente en la zona afectada para atacar manchas y melasma desde la raíz. Unifica el tono de forma progresiva y visible desde las primeras sesiones.</p>
+          <div class="esp-tags">
+            <span class="esp-tag">Disminuye manchas</span><span class="esp-tag">Mejora melasma</span>
+            <span class="esp-tag">Unifica tono</span><span class="esp-tag">Luminosidad facial</span>
+          </div>
+        </div>
+        <div class="esp-right">
+          <div class="esp-proto">Protocolo: 3 a 5 sesiones</div>
+          <a href="https://wa.me/573242437559?text=Hola%20Dra.%20Vanesa%2C%20me%20interesa%20la%20mesoterapia%20despigmentante" target="_blank">
+            <button class="btn-wa-sm">Preguntar por WhatsApp →</button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="esp-item">
+      <button class="esp-trigger" onclick="toggleEsp('e04')" aria-expanded="false">
+        <span class="esp-num">04</span>
+        <span class="esp-name">Rejuvenecimiento Facial</span>
+        <span class="esp-arrow">+</span>
+      </button>
+      <div class="esp-panel" id="e04">
+        <div>
+          <p class="esp-desc">Protocolo multiactivo con retinal, centella asiática, PDNR de salmón y ácido hialurónico — formulado con Skinretin Xpert (Mesoestetic). Estimula la renovación celular, mejora textura y ejerce un potente efecto antiedad.</p>
+          <div class="esp-tags">
+            <span class="esp-tag">Renovación celular</span><span class="esp-tag">Textura y luminosidad</span>
+            <span class="esp-tag">Efecto antiedad</span><span class="esp-tag">Mesoestetic</span>
+          </div>
+        </div>
+        <div class="esp-right">
+          <div class="esp-proto">Ideal para signos tempranos o moderados de envejecimiento</div>
+          <a href="https://wa.me/573242437559?text=Hola%20Dra.%20Vanesa%2C%20me%20interesa%20el%20rejuvenecimiento%20facial" target="_blank">
+            <button class="btn-wa-sm">Preguntar por WhatsApp →</button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="esp-item">
+      <button class="esp-trigger" onclick="toggleEsp('e05')" aria-expanded="false">
+        <span class="esp-num">05</span>
+        <span class="esp-name">Bótox para Hiperhidrosis Axilar</span>
+        <span class="esp-arrow">+</span>
+      </button>
+      <div class="esp-panel" id="e05">
+        <div>
+          <p class="esp-desc">La toxina botulínica bloquea temporalmente las glándulas sudoríparas del área axilar, reduciendo la sudoración excesiva hasta en un 90%. Procedimiento ambulatorio, sin recuperación, con resultados inmediatos.</p>
+          <div class="esp-tags">
+            <span class="esp-tag">Reducción 90% sudoración</span><span class="esp-tag">Elimina mal olor</span>
+            <span class="esp-tag">Ambulatorio</span><span class="esp-tag">Sin recuperación</span>
+          </div>
+        </div>
+        <div class="esp-right">
+          <div class="esp-proto">Duración: 6 a 8 meses</div>
+          <a href="https://wa.me/573242437559?text=Hola%20Dra.%20Vanesa%2C%20me%20interesa%20el%20b%C3%B3tox%20para%20sudoraci%C3%B3n" target="_blank">
+            <button class="btn-wa-sm">Preguntar por WhatsApp →</button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="esp-item">
+      <button class="esp-trigger" onclick="toggleEsp('e06')" aria-expanded="false">
+        <span class="esp-num">06</span>
+        <span class="esp-name">Cauterización y Remoción de Lesiones</span>
+        <span class="esp-arrow">+</span>
+      </button>
+      <div class="esp-panel" id="e06">
+        <div>
+          <p class="esp-desc">Retiro preciso y seguro de lesiones benignas de la piel — lunares, fibromas, verrugas y lesiones afines — mediante electrocauterización. Procedimiento ambulatorio con resultado inmediato y recuperación rápida.</p>
+          <div class="esp-tags">
+            <span class="esp-tag">Resultado inmediato</span><span class="esp-tag">Ambulatorio</span>
+            <span class="esp-tag">Recuperación rápida</span><span class="esp-tag">Sin hospitalización</span>
+          </div>
+        </div>
+        <div class="esp-right">
+          <div class="esp-proto">Sesión única · Resultado inmediato</div>
+          <a href="https://wa.me/573242437559?text=Hola%20Dra.%20Vanesa%2C%20me%20interesa%20la%20cauterizaci%C3%B3n%20de%20lesiones" target="_blank">
+            <button class="btn-wa-sm">Preguntar por WhatsApp →</button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
 <!-- ██ PORTAFOLIO -->
 <section id="portafolio">
   <div class="eyebrow">Resultados reales</div>
   <h2 class="sec-title">Portafolio</h2>
   <p class="sec-body" style="margin-top:12px;">Cada caso es único. Los resultados reflejan el compromiso con la naturalidad y la armonía individual de cada paciente.</p>
+
   <div class="ba-grid">
 
-    <!-- CASO 01 — Bótox frente -->
+    <!-- CASO 01 — Bótox frente antes / después -->
     <div class="caso">
-      <div class="caso-imgs">
-        <div class="caso-label"><img src="botox-antes-1.jpg" alt="Antes toxina botulínica frente" /><span>Antes</span></div>
-        <div class="caso-label"><img src="botox-despues.jpg" alt="Después toxina botulínica frente" /><span>Después</span></div>
+      <div class="caso-duo">
+        <div class="caso-panel">
+          <img src="botox-antes-1.jpg" alt="Antes — arrugas de expresión frente" />
+          <div class="caso-panel-label">Antes</div>
+        </div>
+        <div class="caso-panel">
+          <img src="botox-despues.jpg" alt="Después — frente relajada post toxina" />
+          <div class="caso-panel-label">Después</div>
+        </div>
       </div>
-      <div class="caso-info"><div class="caso-name">Toxina Botulínica · Frente</div><div class="caso-det">Arrugas de expresión · 1 sesión · 6–8 meses de duración</div></div>
-    </div>
-
-    <!-- CASO 02 — Bótox entrecejo -->
-    <div class="caso">
-      <div class="caso-imgs">
-        <div class="caso-label"><img src="botox-antes-2.jpg" alt="Antes toxina botulínica entrecejo" /><span>Antes</span></div>
-        <div class="caso-label"><img src="botox-antes-3.jpg" alt="Después toxina botulínica entrecejo" /><span>Después</span></div>
+      <div class="caso-info">
+        <div class="caso-name">Toxina Botulínica · Frente</div>
+        <div class="caso-det">Arrugas de expresión · 1 sesión · 6–8 meses de duración</div>
       </div>
-      <div class="caso-info"><div class="caso-name">Toxina Botulínica · Entrecejo</div><div class="caso-det">Líneas de expresión · Resultado natural</div></div>
     </div>
 
-    <!-- CASO 03 — PRP Capilar coronilla -->
+    <!-- CASO 02 — PRP Capilar coronilla -->
     <div class="caso">
-      <div class="caso-single"><img src="prp-capilar-1.jpg" alt="PRP Capilar antes y después coronilla" /><div class="caso-single-badge">Antes · Después</div></div>
-      <div class="caso-info"><div class="caso-name">PRP Capilar · Coronilla</div><div class="caso-det">Caída del cabello · Protocolo 3 sesiones</div></div>
-    </div>
-
-    <!-- CASO 04 — PRP Capilar sien -->
-    <div class="caso">
-      <div class="caso-single"><img src="prp-capilar-2.jpg" alt="PRP Capilar antes y después sien" /><div class="caso-single-badge">Antes · Después</div></div>
-      <div class="caso-info"><div class="caso-name">PRP Capilar · Sien</div><div class="caso-det">Densidad capilar · Densificación progresiva</div></div>
-    </div>
-
-    <!-- CASO 05 — Bótox axilar -->
-    <div class="caso">
-      <div class="caso-imgs">
-        <div class="caso-label"><img src="sudoracion-procedimiento.jpg" alt="Procedimiento bótox axilar" /><span>Procedimiento</span></div>
-        <div class="caso-label"><img src="sudoracion.jpg" alt="Resultado bótox axilar" /><span>Resultado</span></div>
+      <div class="caso-single">
+        <img src="prp-capilar-1.jpg" alt="PRP Capilar — antes y después coronilla" />
+        <div class="caso-badge">Antes · Después</div>
       </div>
-      <div class="caso-info"><div class="caso-name">Bótox Axilar</div><div class="caso-det">Hiperhidrosis · Reducción 90% sudoración · 6–8 meses</div></div>
+      <div class="caso-info">
+        <div class="caso-name">PRP Capilar · Coronilla</div>
+        <div class="caso-det">Caída del cabello · Protocolo 3 sesiones · Densificación visible</div>
+      </div>
     </div>
 
-    <!-- CASO 06 — Slot disponible -->
-    <div class="caso" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:260px;border:0.5px dashed rgba(196,149,106,0.35);">
-      <div style="text-align:center;padding:20px;">
-        <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">Próximo caso</div>
-        <div style="font-size:12px;color:var(--muted);">Más resultados en<br><a href="https://instagram.com/dra.vanesad" target="_blank" style="color:var(--accent);">@dra.vanesad</a></div>
+    <!-- CASO 03 — PRP Capilar sien -->
+    <div class="caso">
+      <div class="caso-single">
+        <img src="prp-capilar-2.jpg" alt="PRP Capilar — antes y después sien lateral" />
+        <div class="caso-badge">Antes · Después</div>
+      </div>
+      <div class="caso-info">
+        <div class="caso-name">PRP Capilar · Sien</div>
+        <div class="caso-det">Pérdida temporal · Recuperación progresiva · 3 sesiones</div>
+      </div>
+    </div>
+
+    <!-- CASO 04 — Bótox Axilar -->
+    <div class="caso">
+      <div class="caso-single">
+        <img src="sudoracion-procedimiento.jpg" alt="Bótox axilar — procedimiento hiperhidrosis" />
+        <div class="caso-badge">Procedimiento real</div>
+      </div>
+      <div class="caso-info">
+        <div class="caso-name">Bótox Axilar · Hiperhidrosis</div>
+        <div class="caso-det">Reducción 90% sudoración · Efecto 6–8 meses</div>
+      </div>
+    </div>
+
+    <!-- CASO 05 — Slot próximo caso -->
+    <div class="caso" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:260px;border:0.5px dashed rgba(196,149,106,0.3);">
+      <div style="text-align:center;padding:24px;">
+        <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Próximo caso</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.8;">Más resultados en<br><a href="https://instagram.com/dra.vanesad" target="_blank" style="color:var(--accent);">@dra.vanesad</a></div>
       </div>
     </div>
 
@@ -454,28 +595,34 @@
   <p class="ba-note">* Galería completa en Instagram · <a href="https://instagram.com/dra.vanesad" target="_blank">@dra.vanesad</a></p>
 </section>
 
-<!-- ██ TESTIMONIOS -->
+
+<!-- ════════════════════════════════════════
+     ██ TESTIMONIOS — Sección honesta
+     Cuando tengas testimonios reales:
+     1. Borra el bloque .test-coming completo
+     2. Pega debajo de <h2> el bloque:
+        <div class="test-grid">
+          <div class="test-card">
+            <div class="stars">★★★★★</div>
+            <p class="test-txt">"Texto real del paciente aquí."</p>
+            <div class="test-auth">Nombre · Tratamiento</div>
+          </div>
+          ... más tarjetas ...
+        </div>
+════════════════════════════════════════ -->
 <section id="testimonios">
   <div class="eyebrow">Lo que dicen mis pacientes</div>
   <h2 class="sec-title">Testimonios</h2>
-  <div class="test-grid">
-    <div class="test-card">
-      <div class="stars">★★★★★</div>
-      <p class="test-txt">"El resultado fue completamente natural. Por primera vez sentí que alguien escuchó lo que yo quería, no lo que quería mostrar."</p>
-      <div class="test-auth">M. Rodríguez · Toxina botulínica</div>
+
+  <div class="test-coming">
+    <div class="test-coming-icon">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
     </div>
-    <div class="test-card">
-      <div class="stars">★★★★★</div>
-      <p class="test-txt">"Me sentí segura en todo momento. La doctora explica cada paso con claridad y los resultados superaron mis expectativas."</p>
-      <div class="test-auth">C. Vargas · PRP Capilar</div>
-    </div>
-    <div class="test-card">
-      <div class="stars">★★★★★</div>
-      <p class="test-txt">"La consulta fue honesta y sin presiones. Ahora solo me pregunto por qué no vine antes."</p>
-      <div class="test-auth">L. Moreno · Mesoterapia</div>
-    </div>
+    <div class="test-coming-title">Pronto conocerás lo que<br><em>realmente</em> dicen mis pacientes</div>
+    <p class="test-coming-sub">Esta sección está reservada para testimonios reales. Cada palabra que leas aquí vendrá directamente de quienes han vivido el proceso — sin editar, sin inventar.</p>
   </div>
 </section>
+
 
 <!-- ██ CONTACTO -->
 <section id="contacto">
@@ -486,8 +633,12 @@
     <a href="https://wa.me/573242437559" target="_blank"><button class="btn-accent">WhatsApp · 324 243 75 59</button></a>
     <a href="https://instagram.com/dra.vanesad" target="_blank"><button class="btn-out">Instagram · @dra.vanesad</button></a>
   </div>
-  <div class="contact-data">Manizales, Caldas, Colombia<br>Consultorio privado · Barrio Milán</div>
+  <div class="contact-data">
+    Manizales, Caldas, Colombia<br>
+    Consultorio privado · Barrio Milán
+  </div>
 </section>
+
 
 <!-- ██ FOOTER -->
 <footer id="footer">
@@ -499,7 +650,7 @@
 </footer>
 
 <script>
-  const SECS=['inicio','sobre-mi','servicios','portafolio','testimonios','contacto'];
+  const SECS=['inicio','sobre-mi','protagonistas','portafolio','testimonios','contacto'];
   function ir(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
   document.querySelectorAll('.nl,.sd').forEach(el=>el.addEventListener('click',()=>ir(el.dataset.t)));
   function onScroll(){
@@ -513,11 +664,11 @@
   }
   document.addEventListener('scroll',onScroll,{passive:true});
   onScroll();
-  function toggleSrv(id){
-    const d=document.getElementById(id),c=d.previousElementSibling,open=d.classList.contains('open');
-    document.querySelectorAll('.srv-detail').forEach(x=>x.classList.remove('open'));
-    document.querySelectorAll('.srv-card').forEach(x=>x.setAttribute('aria-expanded','false'));
-    if(!open){d.classList.add('open');c.setAttribute('aria-expanded','true');}
+  function toggleEsp(id){
+    const panel=document.getElementById(id),btn=panel.previousElementSibling,open=panel.classList.contains('open');
+    document.querySelectorAll('.esp-panel').forEach(p=>p.classList.remove('open'));
+    document.querySelectorAll('.esp-trigger').forEach(b=>b.setAttribute('aria-expanded','false'));
+    if(!open){panel.classList.add('open');btn.setAttribute('aria-expanded','true');}
   }
 </script>
 </body>
